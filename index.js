@@ -6,7 +6,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(require('./routes/user.route'))
+app.use(require('./routes/index.route'))
 
 
 mongoose.connect('mongodb+srv://deni:delan_rero_rero@cluster0.wpv95.mongodb.net/NotesApp').then(()=> {
