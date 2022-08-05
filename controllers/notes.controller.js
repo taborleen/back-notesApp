@@ -3,18 +3,21 @@ const Notes = require("../models/notes.model")
 module.exports.notesController = {
     postNotes: async(req, res) => {
         try {
-            const postNote = await Notes.create({
-                name: req.body.name,
-                title: req.body.title,
-                time: req.body.time,
-                color: req.body.color,
-                avatar: req.body.avatar,
-                important: req.body.important,
+            const { name, title, time, color, important } = req.body;
+      
+            const notic = await Notes.create({
+              name,
+              title,
+              time,
+              color,
+              important
             });
-        }catch (error) {
+      
+            return res.json(notic);
+          } catch (error) {
             return res.status(400).json({
-                error: "Ошибка при добавлении комментария: " + error.toString(),
-              });
-            }
-          },
-    }
+              error: "Ошибка при добавлении услуги: " + error.toString(),
+            });
+          }
+        },
+      }
