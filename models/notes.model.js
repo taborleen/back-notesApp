@@ -5,7 +5,6 @@ const notesSchema = mongoose.Schema({
   title: String,
   time: String,
   color: String,
-  avatar: String, //временно
   important: {
     type: Boolean,
     default: false,
