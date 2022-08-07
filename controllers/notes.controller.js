@@ -50,4 +50,21 @@ module.exports.notesController = {
       });
     }
   },
+  pathNote: async (req, res) => {
+    try {
+      await Notes.findByIdAndUpdate(req.params.id, {
+        name: req.body.name,
+        title: req.body.title,
+        time: req.body.time,
+        color: req.body.color,
+        important: req.body.important,
+      });
+      const notic = await Notes.findById(req.params.id);
+      return res.json(notic);
+    } catch (error) {
+      return res.status(400).json({
+        error: "Ошибка при удалении: " + error.message,
+      });
+    }
+  },
 };

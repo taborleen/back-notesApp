@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const notesSchema = mongoose.Schema({
+const todosSchema = mongoose.Schema({
   name: String,
   title: String,
   time: String,
@@ -9,8 +9,12 @@ const notesSchema = mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  completed: {
+    type: Boolean,
+    default: false,
+  },
 });
 
-const Notes = mongoose.model("Notes", notesSchema);
+const Todo = mongoose.model("Todo", todosSchema);
 
-module.exports = Notes;
+module.exports = Todo;
