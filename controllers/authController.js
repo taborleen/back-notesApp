@@ -62,8 +62,18 @@ class authController {
         try {
             const users = await User.find()
             res.json(users)
-        } catch (error) {
-            
+        } catch (e) {
+            res.status(400).json({message: "Ошибка при получении всех пользователей"})
+        }
+    }
+
+    async getUserById(req, res) {
+        try {
+            const { id } = req.params;
+            const user = await User.findById(id);
+            res.json(user)
+        } catch (e) {
+            res.status(400).json({message: "Ошибка при получении пользователя"})
         }
     }
 }
